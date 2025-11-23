@@ -29,6 +29,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link href="/manage-products">
+              <span className="cursor-pointer hover:text-blue-400">Manage Products</span>
+            </Link>
+          </li>
+          <li>
             <Link href="/about">
               <span className="cursor-pointer hover:text-blue-400">About</span>
             </Link>

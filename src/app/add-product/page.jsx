@@ -22,18 +22,17 @@ const AddProduct = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Auto-set local date-time
+  // Auto-set date
   useEffect(() => {
-    const localDateTime = new Date().toLocaleString();
-    setFormData((prev) => ({ ...prev, date: localDateTime }));
+    setFormData((prev) => ({ ...prev, date: new Date().toLocaleString() }));
   }, []);
 
-  // Handle input changes
+  // Handle inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit form
+  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -52,9 +51,12 @@ const AddProduct = () => {
       if (!res.ok) throw new Error('Failed to add product');
 
       await res.json();
-      toast.success('Product added successfully!', { autoClose: 3000 });
 
-      // Reset Form
+      toast.success('Product added successfully!', {
+        autoClose: 1500,
+      });
+
+      // Reset form after success
       setFormData({
         title: '',
         shortDescription: '',
@@ -66,10 +68,15 @@ const AddProduct = () => {
         date: new Date().toLocaleString(),
       });
 
-      router.push('/products');
+      // Delay redirect so toast appears
+      setTimeout(() => {
+        router.push('/products');
+      }, 1600);
     } catch (err) {
       setError(err.message);
-      toast.error(err.message, { autoClose: 5000 });
+      toast.error(err.message, {
+        autoClose: 5000,
+      });
     } finally {
       setLoading(false);
     }
@@ -81,8 +88,10 @@ const AddProduct = () => {
 
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4">
-
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-md space-y-4"
+      >
         {/* Title */}
         <div>
           <label className="block mb-1 font-semibold">Title</label>
@@ -156,6 +165,7 @@ const AddProduct = () => {
             value={formData.imageUrl}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded px-3 py-2"
+            required
           />
         </div>
 
@@ -198,7 +208,7 @@ const AddProduct = () => {
         </button>
       </form>
 
-      <ToastContainer />
+      <ToastContainer position="top-center" />
     </div>
   );
 };
