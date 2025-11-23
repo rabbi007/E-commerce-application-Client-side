@@ -1,23 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ClipLoader } from "react-spinners"; // Importing the spinner
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('');
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('https://e-commerce-application-server-side.vercel.app/products');
+        const res = await fetch(
+          "https://e-commerce-application-server-side.vercel.app/products"
+        );
         if (!res.ok) {
-          throw new Error('Failed to fetch products');
+          throw new Error("Failed to fetch products");
         }
         const data = await res.json();
         setProducts(data);
@@ -37,37 +40,43 @@ const Products = () => {
     let updated = [...products];
 
     // Search
-    if (search.trim() !== '') {
+    if (search.trim() !== "") {
       updated = updated.filter((p) =>
         p.title.toLowerCase().includes(search.toLowerCase())
       );
     }
 
     // Category (UI only)
-    if (category !== '') {
+    if (category !== "") {
       updated = updated.filter((p) => p.category === category);
     }
 
     setFiltered(updated);
   }, [search, category, products]);
 
-  if (loading) return <div className="text-center p-4">Loading...</div>;
+  if (loading)
+    return (
+      <div className="text-center p-4">
+        <div className="flex justify-center items-center h-screen">
+          <ClipLoader size={50} color="#007bff" />
+        </div>
+      </div>
+    );
   if (error) return <div className="text-center p-4 text-red-500">{error}</div>;
 
   return (
     <div className="max-w-7xl mx-auto p-4">
-
       {/* Page Title + Short Description */}
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold">All Products</h1>
         <p className="text-gray-600 mt-2">
-          Explore our latest items. Filter by category or search by product title.
+          Explore our latest items. Filter by category or search by product
+          title.
         </p>
       </div>
 
       {/* Search + Category Filter */}
       <div className="flex flex-col md:flex-row justify-between gap-4 mb-8">
-
         {/* Search */}
         <input
           type="text"

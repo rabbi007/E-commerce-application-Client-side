@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
+"use client";
 
-import { useEffect, useState, use } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState, use } from "react";
+import { useRouter } from "next/navigation";
+import { ClipLoader } from "react-spinners"; // Importing the spinner
 
 export default function ProductDetails({ params }) {
   const { id } = use(params);
@@ -21,12 +22,12 @@ export default function ProductDetails({ params }) {
           `https://e-commerce-application-server-side.vercel.app/products/${id}`
         );
 
-        if (!res.ok) throw new Error('Failed to fetch product');
+        if (!res.ok) throw new Error("Failed to fetch product");
 
         const data = await res.json();
         setProduct(data);
       } catch (err) {
-        console.error('Error:', err);
+        console.error("Error:", err);
       } finally {
         setLoading(false);
       }
@@ -35,19 +36,24 @@ export default function ProductDetails({ params }) {
     loadProduct();
   }, [id]);
 
-  if (loading) return <div className="p-6 text-center">Loading...</div>;
+  if (loading)
+    return (
+      <div className="p-6 text-center">
+        <div className="flex justify-center items-center h-screen">
+          <ClipLoader size={50} color="#007bff" />
+        </div>
+      </div>
+    );
 
   if (!product)
-    return <div className="p-6 text-red-500 text-center">Product not found.</div>;
+    return (
+      <div className="p-6 text-red-500 text-center">Product not found.</div>
+    );
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-
-     
-
       {/* Main Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-
         {/* Large Image */}
         <div>
           <img
@@ -85,15 +91,14 @@ export default function ProductDetails({ params }) {
             </p>
           </div>
 
-           {/* Back Button */}
-      <button
-        onClick={() => router.back()}
-        className="mb-6 px-10 py-2 mt-20 bg-gray-200 rounded hover:bg-gray-300 transition"
-      >
-        ← Back
-      </button>
+          {/* Back Button */}
+          <button
+            onClick={() => router.back()}
+            className="mb-6 px-10 py-2 mt-20 bg-gray-200 rounded hover:bg-gray-300 transition"
+          >
+            ← Back
+          </button>
         </div>
-
       </div>
     </div>
   );
