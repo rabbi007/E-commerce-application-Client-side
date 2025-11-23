@@ -21,12 +21,12 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-4 sticky top-0 z-50">
+    <nav className="bg-orange-800 text-white p-4 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold">
-          E-Commerce
+          Click-&-Buy
         </Link>
 
         <ul className="flex items-center gap-6">

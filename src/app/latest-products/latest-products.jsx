@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ClipLoader } from "react-spinners"; // Importing the spinner
 
 const LatestProducts = () => {
   const [latestProducts, setLatestProducts] = useState([]);
@@ -30,7 +31,15 @@ const LatestProducts = () => {
     fetchLatestProducts();
   }, []);
 
-  if (loading) return <div className="text-center p-4">Loading...</div>;
+  if (loading)
+    return (
+      <div className="text-center p-4">
+        {" "}
+        <div className="flex justify-center items-center h-screen">
+          <ClipLoader size={50} color="#007bff" />
+        </div>
+      </div>
+    );
   if (error) return <div className="text-center p-4 text-red-500">{error}</div>;
 
   return (
