@@ -1,3 +1,5 @@
+import About from "./about/page";
+import LatestProducts from "./latest-products/latest-products";
 
 const Home = () => {
   return (
@@ -8,6 +10,9 @@ const Home = () => {
         <a href="/products" className="text-blue-500 hover:text-blue-700">
           Explore Our Products
         </a>
+      </div>
+      <div>
+        <LatestProducts/>
       </div>
     </div>
   );
