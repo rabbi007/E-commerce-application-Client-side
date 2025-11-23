@@ -1,4 +1,3 @@
-// components/Navbar.jsx
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -22,6 +21,11 @@ const Navbar = () => {
           <li>
             <Link href="/products">
               <span className="cursor-pointer hover:text-blue-400">Products</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/add-product">
+              <span className="cursor-pointer hover:text-blue-400">Add Product</span>
             </Link>
           </li>
           <li>
