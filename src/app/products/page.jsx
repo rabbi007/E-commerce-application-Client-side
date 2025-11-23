@@ -65,7 +65,7 @@ const Products = () => {
   if (error) return <div className="text-center p-4 text-red-500">{error}</div>;
 
   return (
-    <div className="max-w-7xl mx-auto p-4">
+    <div className="max-w-7xl mx-auto p-4 bg-gray-50">
       {/* Page Title + Short Description */}
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold">All Products</h1>
@@ -130,7 +130,7 @@ const Products = () => {
               <span className="text-lg font-bold">${product.price}</span>
               <Link
                 href={`/product/${product._id}`}
-                className="text-blue-500 hover:text-blue-700 font-medium"
+                className="text-blue-500 hover:text-blue-700 font-medium btn"
               >
                 View Details
               </Link>

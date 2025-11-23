@@ -63,7 +63,7 @@ export default function ManageProducts() {
     );
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-6  bg-gray-50">
       <h1 className="text-3xl font-bold mb-8 text-center">Manage Products</h1>
 
       {/* Products Grid */}
@@ -103,14 +103,14 @@ export default function ManageProducts() {
             <div className="flex justify-between mt-4">
               <Link
                 href={`/product/${product._id}`}
-                className="text-blue-500 hover:text-blue-700"
+                className="text-blue-500 hover:text-blue-700 btn btn-info"
               >
                 View
               </Link>
 
               <button
                 onClick={() => deleteProduct(product._id)}
-                className="text-red-500 hover:text-red-700"
+                className="text-red-500 hover:text-red-700 btn btn-active"
               >
                 Delete
               </button>

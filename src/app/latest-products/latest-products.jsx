@@ -66,7 +66,7 @@ const LatestProducts = () => {
               <span className="text-lg font-bold">${product.price}</span>
               <Link
                 href={`/product/${product._id}`}
-                className="text-blue-500 hover:text-blue-700"
+                className="text-blue-500 hover:text-blue-700 btn"
               >
                 View Details
               </Link>
@@ -78,7 +78,7 @@ const LatestProducts = () => {
       <div className="flex justify-center items-center mt-10">
         {/* Back Button */}
         <Link href="/products">
-          <button className="mb-6 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">
+          <button className="btn mb-6 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition">
             All Products →
           </button>
         </Link>
