@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // App Router
+import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
   const router = useRouter();
@@ -12,14 +14,12 @@ const AddProduct = () => {
     price: '',
     stock: '',
     imageUrl: '',
-    date: '', // will hold local date & time
+    date: '',
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
 
-  // Set local date and time when component mounts
   useEffect(() => {
     const localDateTime = new Date().toLocaleString();
     setFormData((prev) => ({ ...prev, date: localDateTime }));
@@ -33,7 +33,6 @@ const AddProduct = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setSuccess(null);
 
     try {
       const res = await fetch(
@@ -48,19 +47,25 @@ const AddProduct = () => {
       if (!res.ok) throw new Error('Failed to add product');
 
       await res.json();
-      setSuccess('Product added successfully!');
+
+      // Show toast on success
+      toast.success('Product added successfully!', { position: 'top-right', autoClose: 3000 });
+
+      // Reset form
       setFormData({
         title: '',
         description: '',
         price: '',
         stock: '',
         imageUrl: '',
-        date: new Date().toLocaleString(), // reset to current local date/time
+        date: new Date().toLocaleString(),
       });
 
+      // Optional redirect
       router.push('/products');
     } catch (err) {
       setError(err.message);
+      toast.error(err.message, { position: 'top-right', autoClose: 5000 });
     } finally {
       setLoading(false);
     }
@@ -71,7 +76,6 @@ const AddProduct = () => {
       <h1 className="text-3xl font-bold mb-6 text-center">Add New Product</h1>
 
       {error && <p className="text-red-500 mb-4">{error}</p>}
-      {success && <p className="text-green-500 mb-4">{success}</p>}
 
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4">
         {/* Title */}
@@ -137,7 +141,7 @@ const AddProduct = () => {
           />
         </div>
 
-        {/* Local Date & Time (Read-only) */}
+        {/* Date (read-only) */}
         <div>
           <label className="block mb-1 font-semibold">Date & Time</label>
           <input
@@ -149,7 +153,6 @@ const AddProduct = () => {
           />
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           disabled={loading}
@@ -158,6 +161,9 @@ const AddProduct = () => {
           {loading ? 'Submitting...' : 'Add Product'}
         </button>
       </form>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 };
