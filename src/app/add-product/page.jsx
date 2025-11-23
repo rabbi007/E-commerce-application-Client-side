@@ -10,25 +10,30 @@ const AddProduct = () => {
 
   const [formData, setFormData] = useState({
     title: '',
-    description: '',
+    shortDescription: '',
+    fullDescription: '',
     price: '',
     stock: '',
     imageUrl: '',
+    category: '',
     date: '',
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Auto-set local date-time
   useEffect(() => {
     const localDateTime = new Date().toLocaleString();
     setFormData((prev) => ({ ...prev, date: localDateTime }));
   }, []);
 
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -47,25 +52,24 @@ const AddProduct = () => {
       if (!res.ok) throw new Error('Failed to add product');
 
       await res.json();
+      toast.success('Product added successfully!', { autoClose: 3000 });
 
-      // Show toast on success
-      toast.success('Product added successfully!', { position: 'top-right', autoClose: 3000 });
-
-      // Reset form
+      // Reset Form
       setFormData({
         title: '',
-        description: '',
+        shortDescription: '',
+        fullDescription: '',
         price: '',
         stock: '',
         imageUrl: '',
+        category: '',
         date: new Date().toLocaleString(),
       });
 
-      // Optional redirect
       router.push('/products');
     } catch (err) {
       setError(err.message);
-      toast.error(err.message, { position: 'top-right', autoClose: 5000 });
+      toast.error(err.message, { autoClose: 5000 });
     } finally {
       setLoading(false);
     }
@@ -78,6 +82,7 @@ const AddProduct = () => {
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4">
+
         {/* Title */}
         <div>
           <label className="block mb-1 font-semibold">Title</label>
@@ -91,19 +96,31 @@ const AddProduct = () => {
           />
         </div>
 
-        {/* Description */}
+        {/* Short Description */}
         <div>
-          <label className="block mb-1 font-semibold">Description</label>
+          <label className="block mb-1 font-semibold">Short Description</label>
           <textarea
-            name="description"
-            value={formData.description}
+            name="shortDescription"
+            value={formData.shortDescription}
             onChange={handleChange}
             className="w-full border border-gray-300 rounded px-3 py-2"
             required
           />
         </div>
 
-        {/* Price & Stock */}
+        {/* Full Description */}
+        <div>
+          <label className="block mb-1 font-semibold">Full Description</label>
+          <textarea
+            name="fullDescription"
+            value={formData.fullDescription}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded px-3 py-2"
+            required
+          />
+        </div>
+
+        {/* Price + Stock */}
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block mb-1 font-semibold">Price ($)</label>
@@ -116,6 +133,7 @@ const AddProduct = () => {
               required
             />
           </div>
+
           <div>
             <label className="block mb-1 font-semibold">Stock</label>
             <input
@@ -141,7 +159,24 @@ const AddProduct = () => {
           />
         </div>
 
-        {/* Date (read-only) */}
+        {/* Category */}
+        <div>
+          <label className="block mb-1 font-semibold">Category</label>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded px-3 py-2"
+            required
+          >
+            <option value="">Select Category</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Gadgets">Gadgets</option>
+            <option value="Accessories">Accessories</option>
+          </select>
+        </div>
+
+        {/* Date */}
         <div>
           <label className="block mb-1 font-semibold">Date & Time</label>
           <input
@@ -153,6 +188,7 @@ const AddProduct = () => {
           />
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
           disabled={loading}
@@ -162,7 +198,6 @@ const AddProduct = () => {
         </button>
       </form>
 
-      {/* Toast Container */}
       <ToastContainer />
     </div>
   );
