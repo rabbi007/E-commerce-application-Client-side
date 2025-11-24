@@ -1,6 +1,16 @@
+
+/* Google Font imported */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
 @import "tailwindcss";
 @plugin "daisyui";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-optical-sizing: auto;
+}

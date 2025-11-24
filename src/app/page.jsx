@@ -1,17 +1,29 @@
-import LatestProducts from "./latest-products/latest-products";
+import Banner from "./components/banner";
+import BlogPage from "./components/blog";
+import ColorfulLine from "./components/ColorfulLine";
+import CustomerReviews from "./components/CustomerReviews";
+import LatestProducts from "./components/latest-products";
 
 const Home = () => {
   return (
-    <div className="max-w-7xl mx-auto p-6  bg-gray-50">
+    <div className="max-w-7xl mx-auto bg-gray-50">
       <div>
-        <h1 className="text-4xl font-bold text-center mb-6 text-yellow-600">
-          Welcome to 'Click-&-Buy'
-        </h1>
-        <p className="text-3xl text-center mb-4">Click - Buy - Enjoy!</p>
+        <Banner />
       </div>
-
       <div>
         <LatestProducts />
+      </div>
+      <div>
+        <ColorfulLine />
+      </div>
+      <div>
+        <BlogPage />
+      </div>
+      <div>
+        <ColorfulLine />
+      </div>
+      <div>
+        <CustomerReviews />
       </div>
     </div>
   );

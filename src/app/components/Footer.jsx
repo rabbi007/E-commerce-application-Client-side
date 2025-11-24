@@ -1,11 +1,14 @@
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+
 const Footer = () => {
   return (
     <footer className="bg-orange-800 text-white py-6">
       <div className="max-w-7xl mx-auto text-center">
-        {/* Copyright Information */}
-        <p className="mb-4 text-xl ">&copy; 2025  Click-&-Buy Inc. All rights reserved.</p>
+        
+        {/* Copyright */}
+        <p className="mb-4 text-xl">&copy; 2025 Click-&-Buy Inc. All rights reserved.</p>
 
-        {/* Navbar Links */}
+        {/* Footer Navbar Links */}
         <ul className="flex justify-center space-x-15 mb-4">
           <li>
             <a
@@ -41,16 +44,16 @@ const Footer = () => {
           </li>
         </ul>
 
-        {/* Social Media Links */}
-        <ul className="flex justify-center space-x-10 mb-4">
+        {/* Social Media Icons */}
+        <ul className="flex justify-center space-x-10 mb-4 text-3xl">
           <li>
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-blue-500 hover:text-blue-300 transition"
             >
-              Facebook
+              <FaFacebook />
             </a>
           </li>
           <li>
@@ -58,9 +61,9 @@ const Footer = () => {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-sky-400 hover:text-sky-300 transition"
             >
-              Twitter
+              <FaTwitter />
             </a>
           </li>
           <li>
@@ -68,14 +71,14 @@ const Footer = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-pink-500 hover:text-pink-300 transition"
             >
-              Instagram
+              <FaInstagram />
             </a>
           </li>
         </ul>
 
-        {/* Made By Info */}
+        {/* Footer Credit */}
         <p className="text-sm">Made with ❤️ by Khandaker Reza-e-Rabbi</p>
       </div>
     </footer>

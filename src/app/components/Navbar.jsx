@@ -66,8 +66,11 @@ export default function Navbar() {
             />
           </div>
           <div>
-            <Link href="/" className="text-2xl font-bold">
-              Click-&-Buy
+            <Link href="/" className="text-3xl font-bold">
+              Click-&-Buy{" "}
+              <span className="ml-1 text-sm italic flex text-indigo-500">
+                Click &nbsp; - &nbsp; Buy &nbsp; - &nbsp; Enjoy!
+              </span>
             </Link>
           </div>
         </div>
@@ -83,7 +86,11 @@ export default function Navbar() {
 
         {/* Navbar Links (Desktop) */}
         <div
-          className={`flex items-center gap-6 lg:flex ${isMenuOpen ? "flex-col absolute top-16 left-0 w-full bg-orange-800 p-4" : "hidden"}`}
+          className={`flex items-center gap-6 lg:flex ${
+            isMenuOpen
+              ? "flex-col absolute top-16 left-0 w-full bg-orange-800 p-4"
+              : "hidden"
+          }`}
           ref={menuRef}
         >
           <ul className="flex items-center gap-6">
@@ -104,10 +111,10 @@ export default function Navbar() {
             {!user ? (
               <>
                 <li>
-                  <Link href="/login">Login</Link>
-                </li>
-                <li>
                   <Link href="/register">Register</Link>
+                </li>
+                 <li>
+                  <Link href="/login">Login</Link>
                 </li>
               </>
             ) : (
