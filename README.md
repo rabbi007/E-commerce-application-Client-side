@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# 'Click-&-Buy' E-Commerce Application
 
-First, run the development server:
+**Click-&-Buy** is a modern, responsive e-commerce web application built with **Next.js** for the frontend, **Express.js** for the backend, and **Firebase** for authentication. This application allows users to browse products, view detailed product information, and manage products if logged in. The app features a polished UI, mobile responsiveness, and secure authentication, making it a fully functional e-commerce platform.
+
+## Features
+
+- **User Authentication**: Users can sign up or log in using email/password or Google authentication via Firebase.
+- **Product Management**: Logged-in users can add, delete, and manage products.
+- **Product Browsing**: Visitors can browse products, view product details, and search/filter by category.
+- **Responsive Design**: The app is fully responsive, providing a seamless experience on mobile, tablet, and desktop.
+
+## NPM Packages Used
+
+```bash
+Next.js: React framework for building the frontend.
+
+Express.js: Web framework for the backend.
+
+Firebase: Authentication services.
+
+MongoDB: NoSQL database for storing product data.
+
+Tailwind CSS: Utility-first CSS framework for styling.
+
+React Icons: Icon library for React components.
+
+React Spinners: Loading spinner components.
+
+React Toastify: To show toast notifications.
+
+Swiper: A modern touch slider for displaying product banners.
+
+DaisyUI: Component library for Tailwind CSS.
+```
+
+## Setup & Installation Instructions
+
+### Prerequisites
+- **Node.js** (v16 or later)
+- **MongoDB** (for product data storage)
+- **Firebase** (for authentication)
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/click-n-buy-e-commerce-application.git
+cd click-n-buy-e-commerce-application
+```
+
+### 2. Install Dependencies
+
+Run the following command to install the required dependencies for both frontend and backend:
+
+```bash
+npm install
+```
+
+### 3. Set Up Environment Variables
+
+Create a `.env` file in the root directory and add the following environment variables:
+
+```bash
+MONGO_URI=<your-mongodb-uri>
+FIREBASE_API_KEY=<your-firebase-api-key>
+FIREBASE_AUTH_DOMAIN=<your-firebase-auth-domain>
+FIREBASE_PROJECT_ID=<your-firebase-project-id>
+FIREBASE_STORAGE_BUCKET=<your-firebase-storage-bucket>
+FIREBASE_MESSAGING_SENDER_ID=<your-firebase-messaging-sender-id>
+FIREBASE_APP_ID=<your-firebase-app-id>
+```
+
+Make sure to replace `<your-mongodb-uri>` and Firebase credentials with your actual values.
+
+### 4. Run the Application
+
+Start the development server for the frontend:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For the backend, you can run it separately using:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm run server
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Your application will be running at `http://localhost:3000`.
 
-## Learn More
+### 5. Build the Application
 
-To learn more about Next.js, take a look at the following resources:
+To build the app for production, run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This will optimize the app for production and serve it on `http://localhost:3000`.
 
-## Deploy on Vercel
+## Route Summary
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Frontend Routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **`/`** - Landing Page: Displays the homepage with a Hero section, Latest Products, Blog, Customer Reviews, and other sections.
+- **`/login`** - Login Page: Allows users to log in using email/password or Google.
+- **`/register`** - Register Page: Allows users to create an account with email/password.
+- **`/products`** - Product List Page: Displays a grid of all available products with search and filter options.
+- **`/product/[id]`** - Product Details Page: Shows detailed information about a selected product, including its image, description, and price.
+- **`/add-product`** - Add Product Page (Protected): Allows logged-in users to add a new product.
+- **`/manage-products`** - Manage Products Page (Protected): Allows logged-in users to view, edit, or delete their products.
+
+### Backend API Routes
+
+- **`/products`** (GET) - Retrieves all products. 
+- **`/products/:id`** (GET) - Retrieves a single product by its ID. (authorized-user-only access).
+- **`/products`** (POST) - Adds a new product to the database (authorized-user-only access).
+- **`/products/:id`** (DELETE) - Deletes a product by its ID (authorized-user-only access).
+- **`/latest`** (GET) - Retrieves the 6 most recent products.
+
+---
+
+### Credits
+Name: Khandaker Reza-e-Rabbi; Email: rabbi@live.com; Github: https://github.com/rabbi007;

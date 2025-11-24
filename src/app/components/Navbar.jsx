@@ -88,24 +88,24 @@ export default function Navbar() {
         <div
           className={`flex items-center gap-6 lg:flex ${
             isMenuOpen
-              ? "flex-col absolute top-16 left-0 w-full bg-orange-800 p-4"
+              ? "flex-col absolute top-25 left-0 w-full bg-orange-800 p-4"
               : "hidden"
           }`}
           ref={menuRef}
         >
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-10">
             <li>
               <Link href="/">Home</Link>
             </li>
             <li>
               <Link href="/products">All Products</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/about">About</Link>
             </li>
             <li>
               <Link href="/contact">Contact</Link>
-            </li>
+            </li> */}
 
             {/* Right Side Authentication */}
             {!user ? (
@@ -113,7 +113,7 @@ export default function Navbar() {
                 <li>
                   <Link href="/register">Register</Link>
                 </li>
-                 <li>
+                <li>
                   <Link href="/login">Login</Link>
                 </li>
               </>
@@ -181,6 +181,12 @@ export default function Navbar() {
                 )}
               </div>
             )}
+            <li>
+              <Link href="/about">About</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
       </div>

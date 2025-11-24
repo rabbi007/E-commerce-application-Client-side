@@ -9,7 +9,7 @@ const Footer = () => {
         <p className="mb-4 text-xl">&copy; 2025 Click-&-Buy Inc. All rights reserved.</p>
 
         {/* Footer Navbar Links */}
-        <ul className="flex justify-center space-x-15 mb-4">
+        <ul className="flex justify-center space-x-5 mb-4">
           <li>
             <a
               href="/"
