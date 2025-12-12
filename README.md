@@ -3,6 +3,14 @@
 
 **Click-&-Buy** is a modern, responsive e-commerce web application built with **Next.js** for the frontend, **Express.js** for the backend, and **Firebase** for authentication. This application allows users to browse products, view detailed product information, and manage products if logged in. The app features a polished UI, mobile responsiveness, and secure authentication, making it a fully functional e-commerce platform.
 
+Live URL: https://click-n-buy-app.vercel.app/
+
+Note: 🚨 Security Update: App Fully Updated 🚨
+
+My app is now fully updated and secured against the React2Shell vulnerability. The necessary patches have been applied, and the site is no longer affected by this issue.
+
+Github Repo link: https://github.com/rabbi007/E-commerce-application-Client-side.git
+
 ## Features
 
 - **User Authentication**: Users can sign up or log in using email/password or Google authentication via Firebase.
