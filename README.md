@@ -5,6 +5,10 @@
 
 ## Live URL: https://click-n-buy-app.vercel.app/
 
+Note: 🚨 Security Update: App Fully Updated 🚨
+My app is now fully updated and secured against the React2Shell vulnerability. 
+The necessary patches have been applied, and the site is no longer affected by this issue.
+
 ## Github Repo link: https://github.com/rabbi007/E-commerce-application-Client-side.git
 
 ## Features
