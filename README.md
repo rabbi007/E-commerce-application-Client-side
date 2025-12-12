@@ -4,7 +4,9 @@
 **Click-&-Buy** is a modern, responsive e-commerce web application built with **Next.js** for the frontend, **Express.js** for the backend, and **Firebase** for authentication. This application allows users to browse products, view detailed product information, and manage products if logged in. The app features a polished UI, mobile responsiveness, and secure authentication, making it a fully functional e-commerce platform.
 
 <<<<<<< HEAD
-Live URL: https://click-n-buy-app.vercel.app/
+Live URL: 
+Netlify Link: https://click-n-buy.netlify.app/
+Vercel Link: https://click-n-buy-app.vercel.app/
 
 Note: 🚨 Security Update: App Fully Updated 🚨
 
